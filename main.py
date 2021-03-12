@@ -11,7 +11,7 @@ update_channel = os.environ.get("update_channel")
 status_message_id = int(os.environ.get("status_message_id"))
 api_id = int(os.environ.get("api_id"))
 api_hash = os.environ.get("api_hash")
-bots_names = [i.strip() for i in os.environ.get("bots_names").split(',')]
+bots_names = [i.strip() for i in os.environ.get("bots_names").split('  ')]
 
 user_client = pyrogram.Client(
     user_session_string, api_id=api_id, api_hash=api_hash)
