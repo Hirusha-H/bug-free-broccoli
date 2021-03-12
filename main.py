@@ -11,6 +11,7 @@ update_channel = os.environ.get("update_channel")
 status_message_id = int(os.environ.get("status_message_id"))
 api_id = int(os.environ.get("api_id"))
 api_hash = os.environ.get("api_hash")
+bots_names = os.environ.get("bots_names")
 
 user_client = pyrogram.Client(
     user_session_string, api_id=api_id, api_hash=api_hash)
@@ -30,12 +31,12 @@ def main():
                 msg = user_client.get_history(bot, 1)[0]
                 if snt.message_id == msg.message_id:
                     print(f"[WARNING] @{bot} is down")
-                    edit_text += f"**{bot}** - @{bot} Status: `Down ❌`\n\n"
+                    edit_text += f"**{bots_names}** - @{bot} Status: `Down ❌`\n\n"
                     user_client.send_message(bot_owner,
                                              f"@{bot} status: `Down`")
                 else:
                     print(f"[INFO] all good with @{bot}")
-                    edit_text += f"**{bot}** - @{bot} Status: `Up ✅`\n\n"
+                    edit_text += f"**{bots_names}** - @{bot} Status: `Up ✅`\n\n"
                 user_client.read_history(bot)
 
             utc_now = datetime.datetime.utcnow()
