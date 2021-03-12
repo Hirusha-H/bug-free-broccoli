@@ -11,7 +11,6 @@ update_channel = os.environ.get("update_channel")
 status_message_id = int(os.environ.get("status_message_id"))
 api_id = int(os.environ.get("api_id"))
 api_hash = os.environ.get("api_hash")
-bots_names = [i.strip() for i in os.environ.get("bots_names").split('  ')]
 
 user_client = pyrogram.Client(
     user_session_string, api_id=api_id, api_hash=api_hash)
@@ -21,7 +20,7 @@ def main():
     with user_client:
         while True:
             print("[INFO] starting to check uptime..")
-            edit_text = f"**@{update_channel}** Bot's Uptime Status 😌.(This list Auto-Update every 4 hours 😂)\n\n"
+            edit_text = f"**@{update_channel}** Bot's Uptime Status 😌.(This list Auto-Update every 4 hours)\n\n"
             for bot in bots:
                 print(f"[INFO] checking @{bot}")
                 snt = user_client.send_message(bot, '/start')
@@ -31,12 +30,12 @@ def main():
                 msg = user_client.get_history(bot, 1)[0]
                 if snt.message_id == msg.message_id:
                     print(f"[WARNING] @{bot} is down")
-                    edit_text += f"**{bots_names}** - @{bot} Status: `Down ❌`\n\n"
+                    edit_text += f" **@{bot}** Status: `Down ❌`\n\n"
                     user_client.send_message(bot_owner,
                                              f"@{bot} status: `Down`")
                 else:
                     print(f"[INFO] all good with @{bot}")
-                    edit_text += f"**{bots_names}** - @{bot} Status: `Up ✅`\n\n"
+                    edit_text += f" **@{bot}** Status: `Up ✅`\n\n"
                 user_client.read_history(bot)
 
             utc_now = datetime.datetime.utcnow()
