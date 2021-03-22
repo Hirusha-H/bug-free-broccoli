@@ -45,9 +45,9 @@ def main():
 
             user_client.edit_message_text(update_channel, status_message_id,
                                          edit_text)
-            print(f"[INFO] everything done! sleeping for 18 hours...")
+            print(f"[INFO] everything done! sleeping for 2 hours...")
 
-            time.sleep(1080 * 60)
+            time.sleep(120 * 60)
 
 
 main()
