@@ -20,7 +20,7 @@ def main():
     with user_client:
         while True:
             print("[INFO] starting to check uptime..")
-            edit_text = f"**@{update_channel}** Bot's Uptime Status 😌.(This list Auto-Update every 2 hours)\n\n"
+            edit_text = f"`Nexa Bots` AKA **@{update_channel}** Bot's Uptime Status 😌.(This list Auto-Update every 16 hours)\n\n"
             for bot in bots:
                 print(f"[INFO] checking @{bot}")
                 snt = user_client.send_message(bot, '/start')
@@ -47,7 +47,7 @@ def main():
                                          edit_text)
             print(f"[INFO] everything done! sleeping for 2 hours...")
 
-            time.sleep(120 * 60)
+            time.sleep(960 * 60)
 
 
 main()
